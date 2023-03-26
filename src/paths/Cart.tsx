@@ -2,6 +2,7 @@ import React from 'react';
 import CheckOutButton from '../components/buttons/CheckOutButton';
 import CartItem from '../components/Store-UI/CartItem';
 import { ProductCard } from '../types';
+import undrawCart from '../assets/empty_cart.svg';
 
 interface Props {
   cart: ProductCard[];
@@ -33,7 +34,9 @@ function Cart({ cart, setCart }: Props) {
                   />
                 );
               })}
-              {/* <CartItem handleRemoveFromCart={handleRemoveFromCart} /> */}
+              {cart.length === 0 ? (
+                <img className='w-96 my-20 mx-auto' src={undrawCart} />
+              ) : null}
             </ul>
             <div className='mt-8 flex justify-end border-t border-gray-100 pt-8'>
               <div className='w-screen max-w-lg space-y-4'>

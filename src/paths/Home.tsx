@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import HatItemCard from '../components/Store-UI/HatItemCard';
 import { ProductCard } from '../types';
 
@@ -71,9 +71,23 @@ function Home({ cart, setCart }: Props) {
         {storeProducts.map((product) => {
           const handleAddToCart = (event: React.MouseEvent) => {
             console.log(`Product ID: ${product.id} added to cart`);
-            setCart([...cart, product]);
-            event.currentTarget.textContent = 'Added to Cart';
-            // TODO Create logic for text to change to "Added to Cart" for a few seconds then change back to "Add to Cart"
+
+            // Check if item is already in the cart
+            const index = cart.findIndex(
+              (cartItem) => cartItem.id === product.id
+            );
+
+            if (index !== -1) {
+              // If item is already in the cart, add the quantities
+              const updatedCart = [...cart];
+              updatedCart[index].quantity += 1;
+              setCart(updatedCart);
+            } else {
+              // If item is not in the cart, add it
+              setCart([...cart, { ...product, quantity: 1 }]);
+            }
+
+            // event.currentTarget.innerHTML = 'Added to cart';
           };
 
           return (

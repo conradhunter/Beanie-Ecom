@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 
 function CartItem({ handleRemoveFromCart, item }: any) {
-  const [quantity, setQuantity] = useState<number>();
-
   return (
     <li className='flex items-center gap-4 bg-slate-100 p-4 rounded-md shadow-md'>
       <img
@@ -16,20 +14,17 @@ function CartItem({ handleRemoveFromCart, item }: any) {
         <dl className='mt-0.5 space-y-px text-xs text-gray-600'>
           <div>
             <dt className='inline'>Price: </dt>
-            <dd className='inline'>${item.price}</dd>
+            <dd className='inline'>${item.price.toFixed(2)}</dd>
           </div>
         </dl>
       </div>
       <div className='flex flex-1 items-center justify-end gap-2'>
         <form>
-          <label htmlFor='Line2Qty' className='sr-only'>
-            {' '}
-            Quantity{' '}
-          </label>
+          <label className='sr-only'> Quantity </label>
           <input
             type='number'
-            id='Line2Qty'
-            className='h-8 w-12 rounded border-gray-200 bg-gray-50 p-0 text-center text-xs text-gray-600 focus:outline-none '
+            value={item.quantity}
+            className='h-8 w-12 rounded border-gray-200 bg-gray-50 p-0 text-center text-xs text-gray-600 focus:outline-none'
           />
         </form>
         <button

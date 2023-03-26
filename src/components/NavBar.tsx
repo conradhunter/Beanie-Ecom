@@ -3,9 +3,7 @@ import { Link } from 'react-router-dom';
 import CartIcon from './icons/CartIcon';
 import Instagram from './icons/InstagramIcon';
 
-function NavBar() {
-  const cartCount = 0;
-
+function NavBar({ cartCount }: any) {
   function displayCartCount() {
     if (cartCount !== 0) {
       return (
