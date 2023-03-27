@@ -7,12 +7,14 @@ import undrawCart from '../assets/empty_cart.svg';
 interface Props {
   cart: ProductCard[];
   setCart: React.Dispatch<React.SetStateAction<ProductCard[]>>;
+  cartCount: number;
 }
 
-function Cart({ cart, setCart }: Props) {
-  function handleRemoveFromCart() {
-    console.log('Removed from cart');
-  }
+function Cart({ cart, setCart, cartCount }: Props) {
+  const pricePerHat = 30.0;
+  const tax = (cartCount * pricePerHat * 0.1).toFixed(2);
+  const cartTotal = (cartCount * pricePerHat).toFixed(2);
+  const grandTotal = (+tax + +cartTotal).toFixed(2);
 
   return (
     <section className=''>
@@ -26,13 +28,7 @@ function Cart({ cart, setCart }: Props) {
           <div className='mt-8'>
             <ul className='space-y-4'>
               {cart.map((item, index) => {
-                return (
-                  <CartItem
-                    key={index}
-                    item={item}
-                    handleRemoveFromCart={handleRemoveFromCart}
-                  />
-                );
+                return <CartItem key={index} item={item} />;
               })}
               {cart.length === 0 ? (
                 <img className='w-96 my-20 mx-auto' src={undrawCart} />
@@ -42,18 +38,16 @@ function Cart({ cart, setCart }: Props) {
               <div className='w-screen max-w-lg space-y-4'>
                 <dl className='space-y-0.5 text-sm text-gray-700'>
                   <div className='flex justify-between'>
-                    <dt>Subtotal</dt>
-                    <dd>$200</dd>
-                  </div>
-
-                  <div className='flex justify-between'>
                     <dt>Shipping</dt>
                     <dd>Calculated at Checkout</dd>
                   </div>
-
+                  <div className='flex justify-between'>
+                    <dt>Tax</dt>
+                    <dd>${tax}</dd>
+                  </div>
                   <div className='flex justify-between !text-base font-medium'>
                     <dt>Total</dt>
-                    <dd>$200</dd>
+                    <dd>${grandTotal}</dd>
                   </div>
                 </dl>
 

@@ -10,8 +10,9 @@ export type HatItemCardProps = {
   name: string;
   image: string;
   price: number;
-  onAddToCart: Function;
+  handleAddToCart: (event: React.MouseEvent) => void;
 };
+
 
 export type CartItem = {
   name: string;

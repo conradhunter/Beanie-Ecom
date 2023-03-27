@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import HatItemCard from '../components/Store-UI/HatItemCard';
 import { ProductCard } from '../types';
 
@@ -86,8 +86,6 @@ function Home({ cart, setCart }: Props) {
               // If item is not in the cart, add it
               setCart([...cart, { ...product, quantity: 1 }]);
             }
-
-            // event.currentTarget.innerHTML = 'Added to cart';
           };
 
           return (
@@ -96,7 +94,7 @@ function Home({ cart, setCart }: Props) {
               name={product.name}
               image={product.image}
               price={product.price}
-              onAddToCart={handleAddToCart}
+              handleAddToCart={handleAddToCart}
             />
           );
         })}

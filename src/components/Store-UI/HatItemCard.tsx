@@ -2,7 +2,12 @@ import React from 'react';
 import { HatItemCardProps } from '../../types';
 import AddToCartButton from '../buttons/AddToCartButton';
 
-function HatItemCard({ name, image, price, onAddToCart }: HatItemCardProps) {
+function HatItemCard({
+  name,
+  image,
+  price,
+  handleAddToCart,
+}: HatItemCardProps) {
   return (
     <div className='w-11/12'>
       <img
@@ -15,7 +20,12 @@ function HatItemCard({ name, image, price, onAddToCart }: HatItemCardProps) {
         <h3 className='mt-4 text-lg font-medium text-gray-900'>{name}</h3>
         <p className='mt-1.5 text-sm text-gray-700'>${price}</p>
 
-        <AddToCartButton onAddToCart={onAddToCart} />
+        <AddToCartButton
+          handleAddToCart={handleAddToCart}
+          name={name}
+          image={image}
+          price={price}
+        />
       </div>
     </div>
   );

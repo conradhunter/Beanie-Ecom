@@ -17,7 +17,7 @@ function NavBar({ cartCount }: any) {
   return (
     <nav className='bg-slate-700 text-white flex items-center justify-between py-6 px-14'>
       <Link to='/'>
-        <span>PeakCaps</span>
+        <span className='text-2xl'>トーク</span>
       </Link>
       <div className='flex gap-6 items-center'>
         <ul className='flex items-center'>

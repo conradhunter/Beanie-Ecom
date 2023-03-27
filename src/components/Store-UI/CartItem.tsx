@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function CartItem({ handleRemoveFromCart, item }: any) {
+function CartItem({ item }: any) {
   return (
     <li className='flex items-center gap-4 bg-slate-100 p-4 rounded-md shadow-md'>
       <img
@@ -27,10 +27,7 @@ function CartItem({ handleRemoveFromCart, item }: any) {
             className='h-8 w-12 rounded border-gray-200 bg-gray-50 p-0 text-center text-xs text-gray-600 focus:outline-none'
           />
         </form>
-        <button
-          className='text-gray-600 transition hover:text-red-600'
-          onClick={handleRemoveFromCart}
-        >
+        <button className='text-gray-600 transition hover:text-red-600'>
           <span className='sr-only'>Remove item</span>
 
           <svg

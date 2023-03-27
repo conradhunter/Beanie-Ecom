@@ -13,7 +13,7 @@ function App() {
 
   const [cartCount, setCartCount] = useState<number>(0);
 
-  // Calculate cart count
+  // Calculate cart count to be displayed in nav
   useEffect(() => {
     const count = cart.reduce(
       (accumulator, item) => accumulator + item.quantity,
@@ -21,6 +21,8 @@ function App() {
     );
     setCartCount(count);
   }, [cart]);
+
+  // toque in japanese = トーク
 
   return (
     <div className='App'>
@@ -31,7 +33,10 @@ function App() {
           path='/custom'
           element={<Custom cart={cart} setCart={setCart} />}
         />
-        <Route path='/cart' element={<Cart cart={cart} setCart={setCart} />} />
+        <Route
+          path='/cart'
+          element={<Cart cart={cart} setCart={setCart} cartCount={cartCount} />}
+        />
       </Routes>
 
       <Footer />
