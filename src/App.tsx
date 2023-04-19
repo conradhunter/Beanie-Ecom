@@ -7,6 +7,7 @@ import Cart from './paths/Cart';
 import Footer from './components/Footer';
 import { useEffect, useState } from 'react';
 import { ProductCard } from './types';
+import TermsOfService from './paths/TermsOfService';
 
 function App() {
   const [cart, setCart] = useState<ProductCard[]>([]);
@@ -22,8 +23,6 @@ function App() {
     setCartCount(count);
   }, [cart]);
 
-  // toque in japanese = トーク
-
   return (
     <div className='App'>
       <NavBar cartCount={cartCount} />
@@ -37,6 +36,7 @@ function App() {
           path='/cart'
           element={<Cart cart={cart} setCart={setCart} cartCount={cartCount} />}
         />
+        <Route path='/terms' element={<TermsOfService />} />
       </Routes>
 
       <Footer />
