@@ -8,7 +8,7 @@ function Footer() {
       <h1 className='text-2xl text-white'>トーク</h1>
       <ul className='text-center text-sm text-white flex flex-col gap-2'>
         <li>
-          <Link className='hover:underline duration-100' to=''>
+          <Link className='hover:underline duration-100' to='/terms'>
             Shipping & Returns
           </Link>
         </li>
